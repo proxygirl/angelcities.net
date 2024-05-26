@@ -5,14 +5,16 @@ const { activities } = Astro.props
 ---
 
 <Card title="Currently I am..." classes={["currently"]}>
-  <ul class="list">
-    {activities.map(activity => (
-      <li class="list-item">
-        {activity.link.url ? 
-          <span>{activity.activity}</span> <a href={activity.link.url}>{activity.link.text}</a> : 
-          <span>{activity.activity}</span> <span>{activity.link.text}</span>
-        } 
-      </li>
-    ))}
-  </ul>
+  {activities ? 
+    <ul class="list">
+      {activities.map(activity => (
+        <li class="list-item">
+          {activity.link.url ? 
+            <span>{activity.activity}</span> <a href={activity.link.url}>{activity.link.text}</a> : 
+            <span>{activity.activity}</span> <span>{activity.link.text}</span>
+          } 
+        </li>
+      ))}
+    </ul>    
+  : ""}
 </Card>
