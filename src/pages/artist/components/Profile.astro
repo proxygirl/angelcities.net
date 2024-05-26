@@ -13,7 +13,7 @@ const { name, photo, profile, links, lastOnline } = Astro.props
     <div class="profile-details">
 
         <div class="profile-photo">
-          <img src={urlForImage(photo).fit("crop").crop("center").width(600).url()} />
+          <img src={photo ? urlForImage(photo).fit("crop").crop("center").width(600).url() : ""} />
         </div>
         <div class="profile-about">
           <div class="profile-about-wrapper">
