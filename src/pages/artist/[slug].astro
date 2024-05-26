@@ -1,0 +1,50 @@
+---
+// Sanity
+import { sanityClient } from "sanity:client";
+
+// Utilities
+import slugify from '../../util/slugify'
+
+// Components
+import Page from '../../layouts/Page.astro'
+import Profile from './components/Profile.astro'
+import Currently from './components/Currently.astro'
+import Feed from '../../components/Feed.astro'
+
+export async function getStaticPaths() {
+  const artists = await sanityClient.fetch(`*[_type == "artist" && name != "angelcities"]`);
+
+  return artists.map((artist) => {
+    return {
+      params: {
+        slug: slugify(artist.name) || '',
+      },
+      props: { ...artist },
+    };
+  });
+}
+
+const { name, photo, links, blog, blog_theme, _updatedAt} = Astro.props;
+
+const posts = await sanityClient.fetch(`*[_type == "post" && author._ref in *[name=="${name}"]._id] {..., author->} | order(_createdAt desc)`);
+
+---
+<Page title={name} classes={["artist"]} theme={blog_theme}>
+
+  <section class="sidebar">
+    <Profile 
+      name={name}
+      photo={photo}
+      links={links}
+      lastOnline={_updatedAt}
+      profile={blog ? blog.profile : ""}
+    />
+
+    {blog ? <Currently activities={blog.currently}/> : ""}
+  </section>
+
+  <section class="feed">
+    <Feed posts={posts} />
+  </section>
+
+</Page>

@@ -1,0 +1,52 @@
+---
+import moment from 'moment';
+import urlForImage from "../../../sanity/urlForImage";
+
+import Card from '../../../components/Card.astro'
+
+const { name, photo, profile, links, lastOnline } = Astro.props
+---
+
+<Card title={name} classes={["profile"]}>
+  <div class="profile-content">
+
+    <div class="profile-details">
+
+        <div class="profile-photo">
+          <img src={urlForImage(photo).fit("crop").crop("center").width(600).url()} />
+        </div>
+        <div class="profile-about">
+          <div class="profile-about-wrapper">
+            { profile ? 
+             <div>
+                {profile.name ? <div>{profile.name}</div> : ""}
+                {profile.pronouns ? <div>{profile.pronouns}</div> : ""}
+                {profile.location ? <div>{profile.location}</div> : ""}
+              </div>
+            : "" }
+
+            {profile && profile.bio ?  <div class="about-bio">{profile.bio}</div> : ""}
+            {lastOnline ?
+              <div class="profile-last-online">
+               Last online {
+                moment(Date.now()).diff(new Date(lastOnline), 'days') == 0 ? 'today' :
+                `${moment(Date.now()).diff(new Date(lastOnline), 'days')} days ago.`
+              }
+              </div> 
+            : ""}
+            </div>
+        </div>
+
+    </div>
+    <div class="profile-links">
+      <ul class="list">
+        {links ? links.map(link => (
+          <li class="list-item">
+            <a href={link.url}>{link.text}</a>
+          </li>
+        )): ""}
+      </ul>      
+    </div>
+
+  </div>
+</Card>

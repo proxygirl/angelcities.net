@@ -1,16 +1,31 @@
 ---
+import { sanityClient } from "sanity:client";
+
+import Page from '../layouts/Page.astro'
+import Card from '../components/Card.astro'
+import Feed from '../components/Feed.astro'
+import Roster from '../components/Roster.astro'
+
+const site = await sanityClient.fetch(`*[_type == "settings"][0]`);
+const artists = await sanityClient.fetch(`*[_type == "artist" && name != "angelcities"] | order(lower(name) asc)`);
+const posts = await sanityClient.fetch(`*[_type == "post"] {..., author->} | order(_createdAt desc)`);
 
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Page title="home" classes={["home"]} theme={site.blog_theme}>
+  <section class="fullbar">
+    <Card title="Welcome to angelcities!" classes={["welcome"]}>
+      <div>{site.welcome}</div>
+    </Card>
+
+  </section>
+  <section class="sidebar">
+    <Card title="Roster" classes={["roster"]}>
+      <Roster artists = { artists }/>
+    </Card>
+  </section>
+  <section class="feed">
+    <Feed posts = { posts } />
+  </section>
+
+</Page>

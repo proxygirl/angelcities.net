@@ -1,0 +1,22 @@
+---
+import moment from 'moment';
+const { title, icon, link, date, classes, theme } = Astro.props
+---
+
+<article class={`card ${classes ? classes.join(' ') : ""}`}>
+  <style define:vars={theme ? theme : {}} />
+  <div class="card-header">
+    <div class="card-title">
+      {icon ? <img class="card-icon" src={icon} /> : ""}
+      <h1 class="card-name">{ link ? 
+        <a class="card-link" href={ link }>{ title }</a> : 
+        title
+      } </h1>
+    </div>
+    {date ? <span class="card-date">{moment(new Date(date)).format('MMM D, YYYY @ h:mma') }</span> : ""}
+  </div>
+    <div class="card-body">
+      <slot />
+    </div>
+  </div>
+</article>

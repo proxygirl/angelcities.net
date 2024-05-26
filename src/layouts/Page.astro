@@ -1,0 +1,34 @@
+---
+import '../styles/scss/main.scss'
+
+import buildTheme from '../sanity/buildTheme'
+
+import Header from '../layouts/Header.astro'
+import MiniHeader from '../layouts/MiniHeader.astro'
+import Footer from '../layouts/Footer.astro'
+
+const { title, classes, theme } = Astro.props
+
+let theme_variables = {}
+
+if (theme) {
+  theme_variables = buildTheme(theme).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {})
+}
+
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>angelcities | {title}</title>
+    <style define:vars={theme_variables} />
+  </head>
+  <body class={`page ${classes ? classes.join(' ') : ""}`}>
+    
+    <div class="wrapper">
+      { title == "home" ? <Header /> : <MiniHeader /> }
+      <main><slot /></main>
+      <Footer />
+  </div>    
+  </body>
+</html>

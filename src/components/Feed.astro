@@ -1,0 +1,44 @@
+---
+import { PortableText as PortableTextInternal } from 'astro-portabletext'
+import PortableTextImage from "../sanity/PortableTextImage.astro";
+
+import buildTheme from '../sanity/buildTheme'
+import slugify from '../util/slugify'
+import urlForImage from "../sanity/urlForImage";
+
+import Card from './Card.astro'
+
+const { posts } = Astro.props
+
+const components = {
+  type: {
+    image: PortableTextImage,
+  }
+};
+---
+
+<section class="feed">
+
+  {posts.length > 0 ? posts.map(post => (
+    <Card
+      title={post.author.name}
+      date ={post._createdAt}
+      link = {`/artist/${slugify(post.author.name)}`}
+      icon={urlForImage(post.author.photo).fit("crop").crop("center").size(25, 25).url()}
+      classes={["post"]}
+      theme = { post.author.blog_theme ? buildTheme(post.author.blog_theme).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {}) : {}}
+    >
+      <PortableTextInternal value={post.body} components={components}/>
+    </Card>
+  )) : 
+    <Card
+        title = "???"
+        date = ""
+        icon = "empty"
+        classes = {["post"]}
+      >
+     So no posts? T_T
+    </Card>
+  }
+
+</section>
