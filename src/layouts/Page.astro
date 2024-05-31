@@ -8,7 +8,7 @@ import MiniHeader from '../layouts/MiniHeader.astro'
 import Footer from '../layouts/Footer.astro'
 
 const { title, classes, theme } = Astro.props
-
+console.log(theme)
 let theme_variables = {}
 
 if (theme) {
@@ -24,11 +24,14 @@ if (theme) {
     <style define:vars={theme_variables} />
   </head>
   <body class={`page ${classes ? classes.join(' ') : ""}`}>
-    
-    <div class="wrapper">
-      { title == "home" ? <Header /> : <MiniHeader /> }
-      <main><slot /></main>
-      <Footer />
-  </div>    
+
+  <div class="wrapper">
+    <div class="wrapper-inner">
+    { title == "home" ? <Header /> : <MiniHeader /> }
+    <main><slot /></main>
+  </div>
+    <Footer />
+  </div>
+   
   </body>
 </html>

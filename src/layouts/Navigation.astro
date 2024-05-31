@@ -1,17 +1,15 @@
 ---
+const { links } = Astro.props
 ---
-<div class="navigation">
-  <nav class="menu">
-    <ul class="menu-inner">
-      <li class="menu-item">
-        <span class="menu-link">angelcities</span>
-      </li>      
-    <li class="menu-item">
-      <a class="menu-link">home</a>
+<nav class="full-width">
+  <ul class="menu list">
+  {links ? links.map(link => (
+    <li class="list-item">
+      {link.url ? 
+           <a href={link.url}>{link.text}</a> : 
+            <span>{link.text}</span>
+          }       
     </li>
-    <li class="menu-item">
-      <a class="menu-link">about</a>
-    </li>
-    </ul>
-  </nav>
-</div>
+  )) : ""}
+  </ul>
+</nav>

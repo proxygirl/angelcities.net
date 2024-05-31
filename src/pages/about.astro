@@ -5,12 +5,10 @@ import { PortableText as PortableTextInternal } from 'astro-portabletext'
 import Page from '../layouts/Page.astro'
 import Navigation from '../layouts/Navigation.astro'
 import Card from '../components/Card.astro'
-import Feed from '../components/Feed.astro'
-import Roster from '../components/Roster.astro'
+
 
 const site = await sanityClient.fetch(`*[_type == "settings"][0]`);
 const artists = await sanityClient.fetch(`*[_type == "artist"] | order(lower(name) asc)`);
-const posts = await sanityClient.fetch(`*[_type == "post"] {..., author->} | order(_createdAt desc)`);
 const angelcities = artists.splice(artists.findIndex(artist => artist.name === "angelcities"), 1)[0]
 ---
 
@@ -20,14 +18,6 @@ const angelcities = artists.splice(artists.findIndex(artist => artist.name === "
     <Card title={site.welcome.title} classes={["post welcome"]} theme={ {post: angelcities.blog_theme.post} }>
       <PortableTextInternal value={site.welcome.body}/>
     </Card>
-  </section>
-  <section class="sidebar">
-    <Card title="✨ Roster ✨" classes={["post roster"]} theme={ {post: angelcities.blog_theme.post} }>
-      <Roster artists = { artists }/>
-    </Card>
-  </section>
-  <section class="feed">
-    <Feed posts = { posts } />
   </section>
 
 </Page>

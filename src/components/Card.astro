@@ -1,10 +1,16 @@
 ---
+import buildTheme from '../sanity/buildTheme'
 import moment from 'moment';
 const { title, icon, link, date, classes, theme } = Astro.props
+let theme_variables = {}
+if (theme) {
+  theme_variables = buildTheme(theme).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {})
+}
+
 ---
 
 <article class={`card ${classes ? classes.join(' ') : ""}`}>
-  <style define:vars={theme ? theme : {}} />
+  <style define:vars={theme_variables} />
   <div class="card-header">
     <div class="card-title">
       {icon ? <img class="card-icon" src={icon} /> : ""}

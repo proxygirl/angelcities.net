@@ -23,10 +23,10 @@ const components = {
     <Card
       title={post.author.name}
       date ={post._createdAt}
-      link = {`/artist/${slugify(post.author.name)}`}
+      link = { post.author.name !== "angelcities" ? `/artist/${slugify(post.author.name)}` : null}
       icon={urlForImage(post.author.photo).fit("crop").crop("center").size(25, 25).url()}
       classes={["post"]}
-      theme = { post.author.blog_theme ? buildTheme(post.author.blog_theme).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {}) : {}}
+      theme = { post.author.blog_theme ? post.author.blog_theme : {}}
     >
       <PortableTextInternal value={post.body} components={components}/>
     </Card>
@@ -37,7 +37,7 @@ const components = {
         icon = "empty"
         classes = {["post"]}
       >
-     So no posts? T_T
+     <p>So no posts? T_T</p>
     </Card>
   }
 

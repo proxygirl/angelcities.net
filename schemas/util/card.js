@@ -16,7 +16,10 @@ export default [
         title: 'Text Color',
         type: 'color',
       }                   
-    ]
+    ],
+    initialValue: {
+      background: "#FFFFFF"
+    }
   },            
   {
     name: 'body',

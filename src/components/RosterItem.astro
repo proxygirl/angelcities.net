@@ -16,11 +16,11 @@ const { artist, theme } = Astro.props
     <div class="roster-content-inner">
       <a href={`/artist/${slugify(artist.name)}`}>{artist.name}</a>
       <div class="roster-links">
-        {artist.links.map(link => 
+        {artist.links ? artist.links.map(link => 
           <span class="roster-link">
             <a href={link.url}>{link.text}</a>
           </span>
-        )}
+        ) : ""}
       </div>
     </div>
   </div>

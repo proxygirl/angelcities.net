@@ -11,7 +11,7 @@ const singletonActions = new Set(["publish", "discardChanges", "restore"])
 const singletonTypes = new Set(["settings"])
 
 export default defineConfig({
-  title: "music.angelcities.net",
+  title: "angelcities.net",
   projectId: import.meta.env.PUBLIC_SANITY_STUDIO_PROJECT_ID,
   dataset: import.meta.env.PUBLIC_SANITY_STUDIO_DATASET,
   plugins: [

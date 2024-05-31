@@ -18,7 +18,21 @@ export default [
         name: "profile",
         title: `Profile`,
         type: 'object',
-        fields: [...card]
+        fields: [...card,
+          {
+            name: 'links',
+            title: 'Links',
+            type: 'object',
+            fields: [            
+              background,    
+              {
+                name: 'link_color',
+                title: 'Link Color',
+                type: 'color',
+              },                              
+            ]
+          }          
+        ]
       },
       {
         name: "currently",

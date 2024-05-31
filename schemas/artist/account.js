@@ -12,6 +12,9 @@ export default [
     name: 'photo',
     title: 'Photo',
     type: 'image',
+    options: {
+      accept: ['image/png', 'image/jpeg']
+    }
   },          
   {
     group: 'account',
