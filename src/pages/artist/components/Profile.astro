@@ -4,10 +4,10 @@ import urlForImage from "../../../sanity/urlForImage";
 
 import Card from '../../../components/Card.astro'
 
-const { name, photo, profile, links, lastOnline } = Astro.props
+const { name, photo, profile, links, lastOnline, theme } = Astro.props
 ---
 
-<Card title={name} classes={["profile"]}>
+<Card metadata={{title: name}} classes={["profile"]} theme= {theme}>
   <div class="profile-content">
 
     <div class="profile-details">

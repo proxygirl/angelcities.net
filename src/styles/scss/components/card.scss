@@ -1,0 +1,30 @@
+.card {
+  background-color: var(--card_body_background_color);
+  background-image: var(--card_body_background_image_file);
+  background-size: var(--card_body_background_image_size);
+
+  &-header {
+    color: var(--card_header_text_color);
+    background-color: var(--card_header_background);
+    padding: 0.35rem 0.5rem;
+    border: 1px dotted;
+    border-bottom: none;
+
+    a {
+      color: inherit;
+    }
+
+  }
+
+  &-body {
+    color: var(--card_body_text_color);
+    padding: 1rem;
+    border: 1px dotted;
+
+    a {
+      color: var(--card_body_link_color);;
+    }
+
+  }
+
+}

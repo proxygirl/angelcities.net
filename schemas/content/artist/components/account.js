@@ -1,4 +1,4 @@
-import link from '../util/link'
+import link from "../../../fields/link"
 
 export default [
   {

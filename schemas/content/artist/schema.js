@@ -1,8 +1,9 @@
 import {UsersIcon} from '@sanity/icons'
 
-import account from './artist/account'
-import blog from './artist/blog'
-import blog_theme from './artist/blog_theme'
+import account from './components/account'
+import blog from './components/blog'
+import blog_theme from './components/blog_theme'
+
 
 export default {
   name: 'artist',

@@ -2,7 +2,7 @@
 import { PortableText as PortableTextInternal } from 'astro-portabletext'
 import PortableTextImage from "../sanity/PortableTextImage.astro";
 
-import buildTheme from '../sanity/buildTheme'
+import Post from './Post.astro';
 import slugify from '../util/slugify'
 import urlForImage from "../sanity/urlForImage";
 
@@ -21,23 +21,27 @@ const components = {
 
   {posts.length > 0 ? posts.map(post => (
     <Card
-      title={post.author.name}
-      date ={post._createdAt}
-      link = { post.author.name !== "angelcities" ? `/artist/${slugify(post.author.name)}` : null}
-      icon={urlForImage(post.author.photo).fit("crop").crop("center").size(25, 25).url()}
+      metadata = {{
+        title: post.author.name,
+        date: post._createdAt,
+        link: post.author.name !== "angelcities" ? `/artist/${slugify(post.author.name)}` : null,
+        icon: urlForImage(post.author.photo).fit("crop").crop("center").size(25, 25).url()
+      }}
       classes={["post"]}
-      theme = { post.author.blog_theme ? post.author.blog_theme : {}}
+      theme = { post.author.blog_theme.post ? post.author.blog_theme.post : {}}
     >
-      <PortableTextInternal value={post.body} components={components}/>
+    <Post blocks = {post.blocks} />
     </Card>
   )) : 
     <Card
-        title = "???"
-        date = ""
-        icon = "empty"
-        classes = {["post"]}
-      >
-     <p>So no posts? T_T</p>
+      metadata = {{
+          title: "???",
+          date: "",
+          icon: "empty",
+        }}
+      classes = {["post"]}
+    >
+      <p>So no posts? T_T</p>
     </Card>
   }
 

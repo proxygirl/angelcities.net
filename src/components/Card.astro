@@ -1,28 +1,44 @@
 ---
 import buildTheme from '../sanity/buildTheme'
 import moment from 'moment';
-const { title, icon, link, date, classes, theme } = Astro.props
+
+const { 
+  metadata = {
+    title: "Card",
+    icon: "none",
+  },
+  classes,
+  theme
+} = Astro.props
+
 let theme_variables = {}
+
 if (theme) {
-  theme_variables = buildTheme(theme).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {})
+  theme_variables = buildTheme({card: theme}).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {})
 }
 
 ---
-
 <article class={`card ${classes ? classes.join(' ') : ""}`}>
+
   <style define:vars={theme_variables} />
-  <div class="card-header">
-    <div class="card-title">
-      {icon ? <img class="card-icon" src={icon} /> : ""}
-      <h1 class="card-name">{ link ? 
-        <a class="card-link" href={ link }>{ title }</a> : 
-        title
-      } </h1>
+
+    <div class="card-header">
+      <div class="card-title">
+        {metadata.icon ? <img class="card-icon" src={metadata.icon} /> : ""}
+        <h1 class="card-name">
+          { metadata.link ? 
+            <a class="card-link" href={ metadata.link }>{ metadata.title }</a> : 
+            metadata.title
+          }
+        </h1>
+      </div>
+      {metadata.date ? <span class="card-date">{moment(new Date(metadata.date)).format('MMM D, YYYY @ h:mma') }</span> : ""}
     </div>
-    {date ? <span class="card-date">{moment(new Date(date)).format('MMM D, YYYY @ h:mma') }</span> : ""}
-  </div>
+
     <div class="card-body">
       <slot />
     </div>
+
   </div>
+
 </article>

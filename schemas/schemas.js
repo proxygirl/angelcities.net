@@ -1,5 +1,5 @@
-import artist from "./artist"
-import settings from "./settings"
-import post from "./post"
+import artist from "./content/artist/schema"
+import settings from "./content/settings"
+import post from "./content/post"
 
 export const schemas = [post, artist, settings]

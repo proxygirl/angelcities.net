@@ -1,0 +1,69 @@
+.roster {
+
+  
+
+  .card-body {
+    --card_header_text_color: initial !important;
+    --card_header_background: initial !important;
+    --card_body_text_color: initial !important;
+    --card_body_background_color: initial !important;
+    padding: 0;
+  }
+
+  &-artists{
+    display: flex;
+    flex-direction: column;
+    padding: 0 !important;
+  }
+  
+  &-artist {
+    display: flex;
+    background: white;
+    border: 1px dotted;
+  }
+
+  &-photo {
+    img {
+      display: flex;
+    }
+  }
+
+  &-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem 0.5rem;
+
+
+    white-space: nowrap;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    background-image: var(--card_body_background_image_file);
+    background-size: var(--card_body_background_image_size);
+    background-color: var(--card_body_background_color);
+    color: var(--card_body_text_color);
+
+    &-inner {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      border: 1px dotted;
+      padding: 0.25rem;
+      background-color: var(--card_body_inner_background);
+    }
+
+    a {
+      color: var(--card_body_text_color);
+    }
+  }  
+
+  &-links {
+    gap: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+}

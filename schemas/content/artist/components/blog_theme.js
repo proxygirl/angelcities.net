@@ -1,5 +1,6 @@
-import card from '../util/card'
-import background from '../util/background'
+import color from '../../../fields/color'
+import background from '../../../fieldsets/background'
+import card from '../../../components/card'
 
 export default [
   {
@@ -12,24 +13,22 @@ export default [
         name: 'site',
         title: 'Site',
         type: 'object',
-        fields: [background]
+        fields: [
+          background('background', 'Background', {hasImage: true}),
+        ]
       },      
       {
         name: "profile",
         title: `Profile`,
         type: 'object',
-        fields: [...card,
+        fields: [...card({hasLinks: false}),
           {
             name: 'links',
             title: 'Links',
             type: 'object',
             fields: [            
-              background,    
-              {
-                name: 'link_color',
-                title: 'Link Color',
-                type: 'color',
-              },                              
+              background('background', 'Background', {hasImage: true}),
+              color('link_color', 'Link Color')                           
             ]
           }          
         ]
@@ -38,13 +37,13 @@ export default [
         name: "currently",
         title: `Currently`,
         type: 'object',
-        fields: [...card]
+        fields: [...card({hasLinks: true})]
       },
       {
         name: "post",
         title: `Post`,
         type: 'object',
-        fields: [...card]
+        fields: [...card({hasLinks: true})]
       }            
     ]
   }

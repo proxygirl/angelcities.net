@@ -1,69 +1,32 @@
 @import "base/reset";
 @import "base/typography";
 @import "abstracts/variables";
+@import "components/post.scss";
+@import "components/card.scss";
+@import "components/roster.scss";
+@import "components/profile.scss";
 
 :root {
-  --primary: #B0DAFF;
 
   --site_background_color: cornsilk;
   --site_background_image_file: none;
   --site_background_image_size: 200px;
 
-  --profile_header_background: var(--primary);
-  --profile_header_text_color: black;  
+  --card_header_background: #B0DAFF;
+  --card_header_text_color: black;  
 
-  --profile_body_background_image_file: none;
-  --profile_body_background_image_size: 200px;
-  --profile_body_background_color: white;
-  --profile_body_inner_background: #fdf4c5;
-  --profile_body_text_color: black;
-  --profile_body_link_color: blue;
+  --card_body_background_image_file: none;
+  --card_body_background_image_size: 200px;
+  --card_body_background_image: none;
+  --card_body_background_color: white;
+  --card_body_inner_background: #fdf4c5;
+  --card_body_text_color: black;  
+  --card_body_link_color: blue;
 
-  --profile_links_background_image_file: none;
-  --profile_links_background_image_size: 200px;
-  --profile_links_background_color: #fdf4c5;
-  --profile_links_link_color: blue;
-
-  --currently_header_background:var(--primary);
-  --currently_header_text_color: black;  
-
-  --currently_body_background_image_file: none;
-  --currently_body_background_image_size: 200px;
-  --currently_body_background_color: white;
-  --currently_body_inner_background: white;
-  --currently_body_text_color: black;
-  --currently_body_link_color: blue;
-
-  --post_header_background: var(--primary);
-  --post_header_text_color: black;  
-
-  --post_body_background_image_file: none;
-  --post_body_background_image_size: 200px;
-  --post_body_background_image: none;
-  --post_body_background_color: white;
-  --post_body_inner_background: #fdf4c5;
-  --post_body_text_color: black;  
-
-  // Home
-  --welcome_header_background: var(--primary);
-  --welcome_header_text_color: black;  
-
-  --welcome_body_background_image_file: none;
-  --welcome_body_background_image_size: 200px;
-  --welcome_body_background_image: none;
-  --welcome_body_background_color: white;
-  --welcome_body_inner_background: #fdf4c5;
-  --welcome_body_text_color: black;
-
-  --roster_header_background: var(--primary);
-  --roster_header_text_color: black;  
-
-  --roster_body_background_image_file: none;
-  --roster_body_background_image_size: 200px;
-  --roster_body_background_image: none;
-  --roster_body_background_color: white;
-  --roster_body_inner_background: #fdf4c5;
-  --roster_body_text_color: black;  
+  --card_links_background_image_file: none;
+  --card_links_background_image_size: 200px;
+  --card_links_background_color: #fdf4c5;
+  --card_links_link_color: blue;  
   
 }
 
@@ -79,7 +42,6 @@ html {
 
 html::after {
   width: 100%;
-
   height: 100%;
   display: block;
   content: "";
@@ -178,6 +140,7 @@ nav {
 }
 
 .banner {
+  display: flex;
   &-logo {
     display: flex;
   }
@@ -225,104 +188,8 @@ img {
   gap: 0.5rem;
 }
 
-.card {
 
-  &-header {
-    padding: 0.35rem 0.5rem;
-    border: 1px dotted;
-    border-bottom: none;
-  }
-
-  &-body {
-    padding: 1rem;
-    border: 1px dotted;
-  }
-
-  &-inner {
-    padding: 0.75rem;
-    border: 1px dotted;
-  }
-
-}
-
-.roster {
-
-  .card-header {
-    padding: 0.35rem 0.5rem !important;
-    font-size: 1rem !important;
-    max-width: unset;
-  }
-
-  .card-name {
-    white-space: initial;
-    overflow: initial;
-    text-overflow: unset;
-    max-width: unset;        
-  } 
-
-  .card-body {
-    padding: 0;
-  }
-
-  &-artists{
-    display: flex;
-    flex-direction: column;
-    padding: 0 !important;
-  }
-  
-  &-artist {
-    display: flex;
-    background: white;
-    border: 1px dotted;
-  }
-
-  &-photo {
-    img {
-      display: flex;
-    }
-  }
-
-  &-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem 0.5rem;
-
-
-    white-space: nowrap;
-    flex-wrap: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-
-    background-image: var(--profile_body_background_image_file);
-    background-size: var(--profile_body_background_image_size);
-    background-color: var(--profile_body_background_color);
-    color: var(--profile_body_text_color);
-
-    &-inner {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      border: 1px dotted;
-      padding: 0.25rem;
-      background-color: var(--profile_body_inner_background);
-    }
-
-    a {
-      color: var(--profile_body_text_color);
-    }
-  }  
-
-  &-links {
-    gap: 0.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-}
-
-.post.welcome {
+.post.welcome, .post.currently {
 
   .card-header {
     padding: 0.35rem 0.5rem;
@@ -339,184 +206,3 @@ img {
 
 }
 
-.roster {
-  background-color: var(--roster_body_background_color);
-  background-image: var(--roster_body_background_image_file);
-  background-size: var(--roster_body_background_image_size);
-  color: var(--roster_body_text_color);
-
-  .card-header {
-    background-color: var(--roster_header_background);
-    color:  var(--roster_header_text_color);
-  }
-}
-
-.post {
-
-  background-color: var(--post_body_background_color);
-  background-image: var(--post_body_background_image_file);
-  background-size: var(--post_body_background_image_size);
-  color: var(--post_body_text_color);
-
-  .card-header {
-    background-color: var(--post_header_background);
-    color:  var(--post_header_text_color);
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    padding: 0 0.5rem 0 0;
-    font-size: 0.9rem;
-    
-    a {
-      color:  var(--post_header_text_color);      
-    }
-  }
-
-  .card-title {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .card-name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 180px;        
-  }  
-
-  .card-body {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;    
-    gap: 1rem;
-
-    > *:not(.picture) {
-      padding: 0.75rem;
-      border: 1px dotted;
-      background-color: var(--post_body_inner_background);
-      color: var(--post_body_paragraph_color);
-    }
-
-
-    .picture {
-      display: flex;
-      justify-content: center;
-    }
-
-    p:empty {
-      display: none;
-    }
-
-  }  
-
-}
-
-.currently {
-
-  background-color: var(--currently_body_background_color);
-  background-image: var(--currently_body_background_image_file);
-  background-size: var(--currently_body_background_image_size);
-  
-  color: var(--currently_body_text_color);
-  
-  a {
-    color: var(--currently_body_link_color);
-  }
-
-  .list {
-    padding: 0.75rem;
-    background-color: var(--currently_body_inner_background);
-    border: 1px dotted;
-  }
-  
-  .card-header {
-    background-color: var(--currently_header_background);
-    color:  var(--currently_header_text_color);
-  }
-
-}
-
-.profile {
-  background-color: var(--profile_body_background_color);
-  background-image: var(--profile_body_background_image_file);
-  background-size: var(--profile_body_background_image_size);
-  color: var(--profile_body_text_color);
-
-  h2 {
-    font-size: 1.1rem;;
-  }
-
-  a {
-    color: var(--profile_body_link_color);
-  }
-
-  .card-header {
-    background-color: var(--profile_header_background);
-    color: var(--profile_header_text_color);
-  }
-
-  &-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  &-details {
-    display: grid;
-    gap: 1.5rem;
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  &-photo {
-    display: flex;
-  }
-
-  &-about {
-
-    &-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-      
-      padding: 0.75rem;
-      border: 1px dotted;
-      background-color: var(--profile_body_inner_background);
-    }
-
-  }
-
-  .about-bio {
-    font-size: 0.9rem;
-    border-top: 1px dotted;
-    border-bottom: 1px dotted;
-    padding-block: 0.65rem;    
-  }
-
-  &-last-online {
-    font-size: 0.7rem;
-  }
-
-  &-links {
-
-    .list-item {
-      display: flex;
-      justify-content: center;
-      border: 1px dotted;
-      padding: 0.25rem 0.25rem;
-      background-color: var(--profile_links_background_color);
-      background-image: var(--profile_links_background_image_file);
-      background-size: var(--profile_links_background_image_size);
-
-      a {
-        flex: 1;
-        text-align: center;
-        color: var(--profile_links_link_color);
-      }      
-    }
-
-  }
-
-}

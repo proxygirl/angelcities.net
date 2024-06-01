@@ -1,9 +1,6 @@
 ---
 import buildTheme from '../sanity/buildTheme'
-
-import Card from './Card.astro'
 import RosterItem from './RosterItem.astro'
-
 
 const { artists } = Astro.props
 ---
@@ -12,7 +9,7 @@ const { artists } = Astro.props
 {artists.map(artist => 
   <RosterItem
     artist={artist}
-    theme={artist.blog_theme ? buildTheme(artist.blog_theme).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {}) : {}}
+    theme={artist.blog_theme && artist.blog_theme.profile ? buildTheme({card: artist.blog_theme.profile}).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {}) : {}}
    />
 )}
 </ul>

@@ -8,30 +8,36 @@ import MiniHeader from '../layouts/MiniHeader.astro'
 import Footer from '../layouts/Footer.astro'
 
 const { title, classes, theme } = Astro.props
-console.log(theme)
+
 let theme_variables = {}
 
 if (theme) {
-  theme_variables = buildTheme(theme).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {})
+  theme_variables = buildTheme({site: theme}).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {})
 }
 
 ---
 <html lang="en">
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>angelcities | {title}</title>
-    <style define:vars={theme_variables} />
+    <style define:vars={ theme_variables}/>
   </head>
+  
   <body class={`page ${classes ? classes.join(' ') : ""}`}>
 
-  <div class="wrapper">
-    <div class="wrapper-inner">
-    { title == "home" ? <Header /> : <MiniHeader /> }
-    <main><slot /></main>
-  </div>
-    <Footer />
-  </div>
+    <div class="wrapper">
+
+      <div class="wrapper-inner">
+        { title == "home" ? <Header /> : <MiniHeader /> }
+        <main><slot /></main>
+      </div>
+
+      <Footer />
+
+    </div>
    
   </body>
+
 </html>

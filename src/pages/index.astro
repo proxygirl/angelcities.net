@@ -5,6 +5,7 @@ import { PortableText as PortableTextInternal } from 'astro-portabletext'
 import Page from '../layouts/Page.astro'
 import Navigation from '../layouts/Navigation.astro'
 import Card from '../components/Card.astro'
+import Post from "../components/Post.astro";
 import Feed from '../components/Feed.astro'
 import Roster from '../components/Roster.astro'
 
@@ -14,15 +15,24 @@ const posts = await sanityClient.fetch(`*[_type == "post"] {..., author->} | ord
 const angelcities = artists.splice(artists.findIndex(artist => artist.name === "angelcities"), 1)[0]
 ---
 
-<Page title="home" classes={["home"]} theme={ {site: angelcities.blog_theme.site} }>
+<Page title="home" classes={["home"]} theme={ angelcities.blog_theme.site }>
+  
   <Navigation links={ angelcities.links }/>
   <section class="full-width">
-    <Card title={site.welcome.title} classes={["post welcome"]} theme={ {post: angelcities.blog_theme.post} }>
-      <PortableTextInternal value={site.welcome.body}/>
+    <Card 
+      metadata={{title: site.welcome.title}}
+      classes={["post welcome"]}
+      theme={ angelcities.blog_theme.post }
+    >
+      <Post blocks = {site.welcome.blocks} />
     </Card>
   </section>
   <section class="sidebar">
-    <Card title="✨ Roster ✨" classes={["post roster"]} theme={ {post: angelcities.blog_theme.post} }>
+    <Card
+      metadata={{title: site.roster.title }}
+      classes={["roster"]}
+      theme={ angelcities.blog_theme.post }
+    >
       <Roster artists = { artists }/>
     </Card>
   </section>

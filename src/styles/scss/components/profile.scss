@@ -1,0 +1,63 @@
+.profile {
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &-details {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &-photo {
+    display: flex;
+  }
+
+  &-about {
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border: 1px dotted;
+      background-color: var(--card_body_inner_background);
+    }
+
+  }
+
+  .about-bio {
+    font-size: 0.9rem;
+    border-top: 1px dotted;
+    border-bottom: 1px dotted;
+    padding-block: 0.65rem;    
+  }
+
+  &-last-online {
+    font-size: 0.7rem;
+  }
+
+  &-links {
+
+    .list-item {
+      display: flex;
+      justify-content: center;
+      border: 1px dotted;
+      padding: 0.25rem 0.25rem;
+      background-color: var(--card_links_background_color);
+      background-image: var(--card_links_background_image_file);
+      background-size: var(--card_links_background_image_size);
+
+      a {
+        flex: 1;
+        text-align: center;
+        color: var(--card_links_link_color);
+      }      
+    }
+
+  }
+
+}

@@ -28,8 +28,9 @@ const { name, photo, links, blog, blog_theme, _updatedAt} = Astro.props;
 
 const posts = await sanityClient.fetch(`*[_type == "post" && author._ref in *[name=="${name}"]._id] {..., author->} | order(_createdAt desc)`);
 
+console.log(blog_theme)
 ---
-<Page title={name} classes={["artist"]} theme={blog_theme}>
+<Page title={name} classes={["artist"]} theme={blog_theme ? blog_theme.site : {}}>
 
   <section class="sidebar">
     <Profile 
@@ -38,9 +39,10 @@ const posts = await sanityClient.fetch(`*[_type == "post" && author._ref in *[na
       links={links}
       lastOnline={_updatedAt}
       profile={blog ? blog.profile : ""}
+      theme ={blog_theme ? blog_theme.profile : {}}
     />
 
-    {blog ? <Currently activities={blog.currently}/> : ""}
+    {blog ? <Currently activities={blog.currently} theme={blog_theme.currently}/> : ""}
   </section>
 
   <section class="feed">
