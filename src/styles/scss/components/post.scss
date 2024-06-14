@@ -1,28 +1,40 @@
 .post {
 
-  .card-header {
+  overflow: hidden;
 
+  .card-header {
     display: flex;
     align-items: center;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .card-info {
+    display: flex;
     justify-content: space-between;
-    gap: 0.5rem;
-    padding: 0 0.5rem 0 0;
-    font-size: 0.9rem;
-    
+    flex: 1;
+    overflow: hidden;
+    padding-inline: 0.5rem;
   }
 
   .card-title {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    font-size: 1rem;
+    a {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;        
+    }
+
+  }  
+
+  .card-date {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-  }
-
-  .card-name {
     white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 180px;        
-  }  
+  }
 
   .card-body {
 

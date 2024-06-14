@@ -3,18 +3,22 @@ import Card from '../../../components/Card.astro'
 
 const { activities, theme } = Astro.props
 ---
-
 <Card metadata={{title: "Currently I am..."}} classes={["post currently"]} theme={ theme }>
-  {activities ? 
-    <ul class="list">
-      {activities.map(activity => (
-        <li class="list-item">
-          {activity.link.url ? 
-            <span>{activity.activity}</span> <a href={activity.link.url}>{activity.link.text}</a> : 
-            <span>{activity.activity}</span> <span>{activity.link.text}</span>
-          } 
-        </li>
-      ))}
-    </ul>    
-  : ""}
+  {
+    activities ? 
+      <ul class="list">
+        {
+          activities.map(activity => (
+            <li class="list-item">
+              {
+                activity.link.url ? 
+                  <span>{activity.activity}</span> <a href={activity.link.url}>{activity.link.text}</a> : 
+                  <span>{activity.activity}</span> <span>{activity.link.text}</span>
+              } 
+            </li>
+          ))
+        }
+      </ul>    
+    : ""
+  }
 </Card>

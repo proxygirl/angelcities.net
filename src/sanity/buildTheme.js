@@ -2,7 +2,7 @@ import urlForImage from './urlForImage'
 import colorToRGBA from './colorToRGBA'
 
 export default (obj) => {
-  console.log(obj)
+
   const isObject = val =>
     val && typeof val === 'object' && !Array.isArray(val);
 

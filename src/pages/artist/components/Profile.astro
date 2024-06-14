@@ -6,15 +6,16 @@ import Card from '../../../components/Card.astro'
 
 const { name, photo, profile, links, lastOnline, theme } = Astro.props
 ---
-
 <Card metadata={{title: name}} classes={["profile"]} theme= {theme}>
+
   <div class="profile-content">
 
     <div class="profile-details">
-
+      
         <div class="profile-photo">
           <img src={photo ? urlForImage(photo).fit("crop").crop("center").width(600).url() : ""} />
         </div>
+
         <div class="profile-about">
           <div class="profile-about-wrapper">
             { profile ? 
@@ -38,6 +39,7 @@ const { name, photo, profile, links, lastOnline, theme } = Astro.props
         </div>
 
     </div>
+
     <div class="profile-links">
       <ul class="list">
         {links ? links.map(link => (
@@ -49,4 +51,5 @@ const { name, photo, profile, links, lastOnline, theme } = Astro.props
     </div>
 
   </div>
+
 </Card>

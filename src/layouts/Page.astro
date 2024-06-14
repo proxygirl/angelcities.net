@@ -1,20 +1,23 @@
 ---
 import '../styles/scss/main.scss'
 
+import { sanityClient } from "sanity:client";
+
 import buildTheme from '../sanity/buildTheme'
 
 import Header from '../layouts/Header.astro'
 import MiniHeader from '../layouts/MiniHeader.astro'
 import Footer from '../layouts/Footer.astro'
 
-const { title, classes, theme } = Astro.props
+const site = await sanityClient.fetch(`*[_type == "settings"][0]`);
+
+const { title, classes, theme = site.blog_theme.site } = Astro.props
 
 let theme_variables = {}
 
 if (theme) {
   theme_variables = buildTheme({site: theme}).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {})
 }
-
 ---
 <html lang="en">
 
@@ -29,10 +32,13 @@ if (theme) {
 
     <div class="wrapper">
 
-      <div class="wrapper-inner">
-        { title == "home" ? <Header /> : <MiniHeader /> }
-        <main><slot /></main>
-      </div>
+      { 
+        title == "home" ? 
+          <Header links={site.navigation.links} badges={ site.navigation.badges }/> :
+          <MiniHeader />
+      }
+      
+      <main><slot /></main>
 
       <Footer />
 

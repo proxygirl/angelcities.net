@@ -4,12 +4,16 @@ import RosterItem from './RosterItem.astro'
 
 const { artists } = Astro.props
 ---
-
 <ul class="roster-artists">
-{artists.map(artist => 
-  <RosterItem
-    artist={artist}
-    theme={artist.blog_theme && artist.blog_theme.profile ? buildTheme({card: artist.blog_theme.profile}).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {}) : {}}
-   />
-)}
+
+  {artists.map(artist => 
+    <RosterItem
+      artist={artist}
+      theme={artist.blog_theme && artist.blog_theme.profile ? 
+        buildTheme({card: artist.blog_theme.profile}).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {}) :
+        {}
+      }
+     />
+  )}
+
 </ul>

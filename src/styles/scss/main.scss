@@ -12,7 +12,7 @@
   --site_background_image_file: none;
   --site_background_image_size: 200px;
 
-  --card_header_background: #B0DAFF;
+  --card_header_background_color: #B0DAFF;
   --card_header_text_color: black;  
 
   --card_body_background_image_file: none;
@@ -34,10 +34,10 @@ html {
   display: flex;
   justify-content: center;
   min-height: 100vh;
+  font-family: 'MS Gothic';
   background-color: var(--site_background_color);
   background-image: var(--site_background_image_file);
   background-size: var(--site_background_image_size);
-  font-family: 'MS Gothic';
 }
 
 html::after {
@@ -67,7 +67,12 @@ body {
     flex-direction: column;
     gap: 1rem;
   }
+}
 
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 main {
@@ -81,6 +86,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  overflow: hidden;
 }
 
 .full-width {
@@ -101,6 +107,10 @@ nav {
     flex-direction: row;
     padding: 0.5rem;
     gap: 0px;
+
+    background-image: url(/images/catrunborder.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
   }
 
   .list-item {
@@ -111,8 +121,14 @@ nav {
     content: '/';
     margin-inline: .5em;
     color: var(--menu-color);
-}  
+  }  
 
+}
+
+.border {
+  img {
+    border: none;
+  }
 }
 
 @media only screen and (max-width: 675px) {
@@ -139,11 +155,35 @@ nav {
 
 }
 
-.banner {
+.logo {
+
   display: flex;
-  &-logo {
+
+  a {
     display: flex;
   }
+
+}
+
+.badges {
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none; 
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  overflow-x: scroll;
+  display: flex;
+  border: 1px dotted;
+
+  img {
+    width: 88px;
+    height: 31px;
+    border: none;
+  } 
+
 }
 
 .footer {
@@ -170,6 +210,7 @@ nav {
   &-copyright {
     padding: 0.25rem 0.5rem;
   }
+
 }
 
 h1, h2, h3, h4, h5 {
@@ -188,13 +229,18 @@ img {
   gap: 0.5rem;
 }
 
-
 .post.welcome, .post.currently {
 
   .card-header {
     padding: 0.35rem 0.5rem;
-    font-size: 1rem;
-    max-width: unset;
+  }
+
+  .card-info {
+    padding-inline: initial;
+  }
+
+  .card-title{
+    font-size: revert;
   }
 
   .card-name {
@@ -205,4 +251,3 @@ img {
   }  
 
 }
-

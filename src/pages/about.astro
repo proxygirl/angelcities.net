@@ -1,24 +1,22 @@
 ---
 import { sanityClient } from "sanity:client";
-import { PortableText as PortableTextInternal } from 'astro-portabletext'
 
 import Page from '../layouts/Page.astro'
-import Navigation from '../layouts/Navigation.astro'
 import Card from '../components/Card.astro'
 import Post from "../components/Post.astro";
 
-
 const site = await sanityClient.fetch(`*[_type == "settings"][0]`);
-const artists = await sanityClient.fetch(`*[_type == "artist"] | order(lower(name) asc)`);
-const angelcities = artists.splice(artists.findIndex(artist => artist.name === "angelcities"), 1)[0]
 ---
+<Page title="home" classes={["home"]} >
 
-<Page title="home" classes={["home"]} theme={ angelcities.blog_theme.site }>
-  <Navigation links={ angelcities.links }/>
   <section class="full-width">
-    <Card metadata={{title: site.about.title}} classes={["post welcome"]} theme={ angelcities.blog_theme.post }>
+
+    <Card metadata={{title: site.about.title}} classes={["post welcome"]} >
+
       <Post blocks={site.about.blocks} />
+      
     </Card>
+
   </section>
 
 </Page>

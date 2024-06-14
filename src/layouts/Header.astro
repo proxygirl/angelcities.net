@@ -1,10 +1,14 @@
 ---
 import Navigation from '../layouts/Navigation.astro'
+import Badges from './Badges.astro';
+import Logo from './Logo.astro';
+
+const { links, badges } = Astro.props;
 ---
 <header>
-  <div class={`banner`}>
-    <a class="banner-logo" href="/">
-      <img src="/logo/logo.gif" width="200"/>
-    </a>    
-  </div>
+
+  <Logo size="200" />
+  <Navigation links={ links }/>
+  <Badges badges={ badges } />
+  
 </header>

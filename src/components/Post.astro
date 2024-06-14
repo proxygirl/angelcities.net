@@ -3,14 +3,12 @@ import { PortableText as PortableTextInternal } from 'astro-portabletext'
 import PortableTextImage from "../sanity/PortableTextImage.astro";
 
 const { blocks } = Astro.props
-
 const components = {
   type: {
     image: PortableTextImage,
   }
 }
 ---
-
 <>
   {blocks? 
     blocks.map(block => <div>

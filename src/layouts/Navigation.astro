@@ -2,14 +2,29 @@
 const { links } = Astro.props
 ---
 <nav class="full-width">
+
   <ul class="menu list">
-  {links ? links.map(link => (
+
     <li class="list-item">
-      {link.url ? 
-           <a href={link.url}>{link.text}</a> : 
-            <span>{link.text}</span>
-          }       
+
+      <a href="/">home</a> 
+
     </li>
-  )) : ""}
+
+    {
+      links ? 
+        links.map(link => (
+          <li class="list-item">
+            {
+              link.url ? 
+                <a href={link.url}>{link.text}</a> : 
+                <span>{link.text}</span>
+            }       
+          </li>
+         )) :
+         ""
+    }
+
   </ul>
+
 </nav>

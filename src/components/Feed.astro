@@ -1,7 +1,4 @@
 ---
-import { PortableText as PortableTextInternal } from 'astro-portabletext'
-import PortableTextImage from "../sanity/PortableTextImage.astro";
-
 import Post from './Post.astro';
 import slugify from '../util/slugify'
 import urlForImage from "../sanity/urlForImage";
@@ -9,16 +6,8 @@ import urlForImage from "../sanity/urlForImage";
 import Card from './Card.astro'
 
 const { posts } = Astro.props
-
-const components = {
-  type: {
-    image: PortableTextImage,
-  }
-};
 ---
-
-<section class="feed">
-
+<>
   {posts.length > 0 ? posts.map(post => (
     <Card
       metadata = {{
@@ -44,5 +33,4 @@ const components = {
       <p>So no posts? T_T</p>
     </Card>
   }
-
-</section>
+</>

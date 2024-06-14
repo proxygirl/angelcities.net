@@ -21,18 +21,18 @@ export async function getStaticPaths() {
       },
       props: { ...artist },
     };
-  });
+  })
 }
 
 const { name, photo, links, blog, blog_theme, _updatedAt} = Astro.props;
 
 const posts = await sanityClient.fetch(`*[_type == "post" && author._ref in *[name=="${name}"]._id] {..., author->} | order(_createdAt desc)`);
 
-console.log(blog_theme)
 ---
 <Page title={name} classes={["artist"]} theme={blog_theme ? blog_theme.site : {}}>
 
   <section class="sidebar">
+
     <Profile 
       name={name}
       photo={photo}
@@ -43,10 +43,13 @@ console.log(blog_theme)
     />
 
     {blog ? <Currently activities={blog.currently} theme={blog_theme.currently}/> : ""}
+
   </section>
 
   <section class="feed">
+
     <Feed posts={posts} />
+
   </section>
 
 </Page>

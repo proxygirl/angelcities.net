@@ -4,24 +4,38 @@ import urlForImage from "../sanity/urlForImage";
 
 const { artist, theme } = Astro.props
 ---
-
 <li  class="roster-artist">
+
   <style define:vars={theme ? theme : {}} />
+
   <div class="roster-photo">
+
     <a href={`/artist/${slugify(artist.name)}`}>
+
       <img src={urlForImage(artist.photo).fit("crop").crop("center").size(75, 75).url()} />
+
     </a>
+
   </div>
+
   <div class="roster-content">
+
     <div class="roster-content-inner">
+
       <a href={`/artist/${slugify(artist.name)}`}>{artist.name}</a>
+
       <div class="roster-links">
+
         {artist.links ? artist.links.map(link => 
           <span class="roster-link">
             <a href={link.url}>{link.text}</a>
           </span>
         ) : ""}
+        
       </div>
+
     </div>
+
   </div>
+
 </li>
