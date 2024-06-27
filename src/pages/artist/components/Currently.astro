@@ -11,9 +11,9 @@ const { activities, theme } = Astro.props
           activities.map(activity => (
             <li class="list-item">
               {
-                activity.link.url ? 
+                activity.link ? 
                   <span>{activity.activity}</span> <a href={activity.link.url}>{activity.link.text}</a> : 
-                  <span>{activity.activity}</span> <span>{activity.link.text}</span>
+                  <span>{activity.activity}</span>
               } 
             </li>
           ))

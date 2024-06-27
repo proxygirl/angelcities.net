@@ -7,12 +7,13 @@ export default {
       name: 'url',
       title: 'URL',
       type: 'url',
-      validation: Rule => Rule.uri({allowRelative : true})
+      validation: rule => rule.required().uri({allowRelative : true})
     },            
     {
       name: 'text',
       title: 'Text',
       type: 'string',
+      validation: rule => rule.required(),
     }
   ]
 } 
