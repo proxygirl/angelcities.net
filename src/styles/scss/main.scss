@@ -95,7 +95,6 @@ main {
 
 nav {
   background: white;
-  color: var(--post_header_color);
   border: 1px dotted;
 
   a {
@@ -120,7 +119,6 @@ nav {
   li:not(:first-child)::before {
     content: '/';
     margin-inline: .5em;
-    color: var(--menu-color);
   }  
 
 }

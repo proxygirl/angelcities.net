@@ -27,14 +27,7 @@ const { name, photo, profile, links, lastOnline, theme } = Astro.props
             : "" }
 
             {profile && profile.bio ?  <div class="about-bio">{profile.bio}</div> : ""}
-            {lastOnline ?
-              <div class="profile-last-online">
-               Last online {
-                moment(Date.now()).diff(new Date(lastOnline), 'days') == 0 ? 'today' :
-                `${moment(Date.now()).diff(new Date(lastOnline), 'days')} days ago.`
-              }
-              </div> 
-            : ""}
+            {lastOnline ? <div class="profile-last-online"></div> : ""}
             </div>
         </div>
 
@@ -53,3 +46,15 @@ const { name, photo, profile, links, lastOnline, theme } = Astro.props
   </div>
 
 </Card>
+
+<script define:vars={{ lastOnline }}>
+
+  const element = document.querySelector('.profile-last-online')
+
+  const now = new Date()
+  const last = new Date(lastOnline)
+
+  const daysSince = Math.round((now.getTime() - last.getTime()) / (1000 * 3600 * 24))
+  element.innerHTML = daysSince == 0 ? `Last online today.` : `Last online ${daysSince} days ago.`
+
+</script>
