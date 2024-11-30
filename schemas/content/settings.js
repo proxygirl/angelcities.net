@@ -42,6 +42,19 @@ export default {
           of: [link]          
         },
         {
+          name: 'sotd',
+          title: 'Song of the Day',
+          type: 'object',
+          fields: [
+            {
+              name: 'embed',
+              title: 'Embed Code',
+              type: 'string',
+              validation: rule => rule.required()
+            },            
+          ]
+        } ,
+        {
           name: 'badges',
           title: 'Badges',
           type: 'array',

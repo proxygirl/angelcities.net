@@ -96,12 +96,22 @@ main {
 nav {
   background: white;
   border: 1px dotted;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 
   a {
     color: blue;
   }
 
+  .sotd {
+    flex: 1 300px;
+    display: flex;
+    border: 1px dotted;
+  }
+
   .menu {
+    flex: 1 350px;
     display: flex;
     flex-direction: row;
     padding: 0.5rem;

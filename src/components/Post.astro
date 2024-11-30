@@ -1,11 +1,13 @@
 ---
 import { PortableText as PortableTextInternal } from 'astro-portabletext'
 import PortableTextImage from "../sanity/PortableTextImage.astro";
+import PortableTextEmbed from '../sanity/PortableTextEmbed.astro';
 
 const { blocks } = Astro.props
 const components = {
   type: {
     image: PortableTextImage,
+    embed: PortableTextEmbed
   }
 }
 ---

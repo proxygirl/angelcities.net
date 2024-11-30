@@ -1,5 +1,5 @@
 ---
-const { links } = Astro.props
+const { links, sotd } = Astro.props
 ---
 <nav class="full-width">
 
@@ -26,5 +26,7 @@ const { links } = Astro.props
     }
 
   </ul>
+
+  <div class="sotd" set:html={ sotd.embed }></div>
 
 </nav>

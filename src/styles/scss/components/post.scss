@@ -43,14 +43,14 @@
     gap: 0.5rem;    
     gap: 1rem;
 
-    > *:not(:has(.picture)) {
+    > *:not(:has(.picture, .embed)) {
       padding: 0.75rem;
       border: 1px dotted;
       background-color: var(--card_body_inner_background_color);
       color: var(--card_body_paragraph_color);
     }
 
-    .picture {
+    .picture, .embed {
       display: flex;
       justify-content: center;
 
