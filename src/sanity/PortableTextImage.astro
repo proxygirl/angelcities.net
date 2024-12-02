@@ -1,9 +1,10 @@
 ---
 import urlForImage from './urlForImage';
 
-const {asset, alt} = Astro.props.node
+const {asset, alt, size} = Astro.props.node
 
-const renderedURL = asset ? urlForImage(asset).width(300).format('webp').url() : ""
+const imageSize = size ? size : 300
+const renderedURL = asset ? urlForImage(asset).width(imageSize).format('webp').url() : ""
 const sourceUrl = asset ? urlForImage(asset).url() : ""
 
 ---

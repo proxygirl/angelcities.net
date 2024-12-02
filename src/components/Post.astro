@@ -13,9 +13,16 @@ const components = {
 ---
 <>
   {blocks? 
-    blocks.map(block => <div>
-      <PortableTextInternal value={block.content} components={components}/>
-    </div>)
+    blocks.map(block => {
+
+      const mediaFilter = block.content.filter(obj => { return obj._type === 'image' || obj._type === 'embed'})
+      const isSingle = mediaFilter.length !== 0 && block.content.length == 1 ? true : false
+
+      return <div class={ isSingle ? 'single' : '' }>
+        <PortableTextInternal value={block.content} components={components}/>
+      </div>
+
+    })
     : ""
   }
 </>

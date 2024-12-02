@@ -11,7 +11,7 @@ const site = await sanityClient.fetch(`*[_type == "settings"][0]`);
 
   <section class="full-width">
 
-    <Card metadata={{title: site.about.title}} classes={["post welcome"]} >
+    <Card metadata={{title: site.about.title}} theme={ site.blog_theme.post } classes={["post welcome"]} >
 
       <Post blocks={site.about.blocks} />
       

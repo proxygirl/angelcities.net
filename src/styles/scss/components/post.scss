@@ -39,11 +39,13 @@
   .card-body {
 
     display: flex;
-    flex-direction: column;
-    gap: 0.5rem;    
+    flex-direction: column;  
     gap: 1rem;
 
-    > *:not(:has(.picture, .embed)) {
+    > :not(.single) {
+      display: flex;
+      flex-direction: column;  
+      gap: 0.5rem;      
       padding: 0.75rem;
       border: 1px dotted;
       background-color: var(--card_body_inner_background_color);
