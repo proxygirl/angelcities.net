@@ -30,10 +30,14 @@ if (theme) {
 
         <h1 class="card-title">
 
-          { 
-            metadata.link ? 
-              <a class="card-link" href={ metadata.link }>{ metadata.title }</a> : 
-              metadata.title
+          { metadata.link ? 
+              <a class="card-link" href={ metadata.link }>
+                { metadata.emoticon ? <img src={`/images/emoticons/${metadata.emoticon}`}/> : ''} { metadata.title }
+              </a> 
+              : 
+              <span class="card-name">
+                { metadata.emoticon ? <img src={`/images/emoticons/${metadata.emoticon}`}/> : ''} { metadata.title }
+              </span>
           }
 
         </h1>

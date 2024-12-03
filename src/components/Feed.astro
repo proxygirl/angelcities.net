@@ -12,6 +12,7 @@ const { posts } = Astro.props
     <Card
       metadata = {{
         title: post.author.name,
+        emoticon: post.author.icon,
         date: post._createdAt,
         link: post.author.name !== "angelcities" ? `/artist/${slugify(post.author.name)}` : null,
         icon: urlForImage(post.author.photo).fit("crop").crop("center").size(25, 25).url()

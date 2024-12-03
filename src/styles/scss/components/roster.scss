@@ -1,7 +1,5 @@
 .roster {
 
-  
-
   .card-body {
     --card_header_text_color: initial !important;
     --card_header_background: initial !important;
@@ -25,6 +23,16 @@
   &-photo {
     img {
       display: flex;
+    }
+  }
+
+  &-name {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    
+    img {
+      border: none;
     }
   }
 

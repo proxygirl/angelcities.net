@@ -16,6 +16,16 @@
 
   }
 
+  &-link, &-name {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+
+    img {
+      border: none;
+    }
+  }
+
   &-body {
     color: var(--card_body_text_color);
     padding: 1rem;

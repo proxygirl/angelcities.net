@@ -3,6 +3,9 @@ import slugify from '../util/slugify'
 import urlForImage from "../sanity/urlForImage";
 
 const { artist, theme } = Astro.props
+
+const photo = artist.photo ? urlForImage(artist.photo).fit("crop").crop("center").size(75, 75).url() : '/logo/logo.gif'
+
 ---
 <li  class="roster-artist">
 
@@ -12,7 +15,7 @@ const { artist, theme } = Astro.props
 
     <a href={`/artist/${slugify(artist.name)}`}>
 
-      <img src={urlForImage(artist.photo).fit("crop").crop("center").size(75, 75).url()} />
+      <img src={photo} width="75" height="75" />
 
     </a>
 
@@ -22,7 +25,10 @@ const { artist, theme } = Astro.props
 
     <div class="roster-content-inner">
 
-      <a href={`/artist/${slugify(artist.name)}`}>{artist.name}</a>
+        
+        <a class="roster-name" href={`/artist/${slugify(artist.name)}`}>
+          { artist.icon ? <img src={`/images/emoticons/${artist.icon}`} />: ''} {artist.name}
+        </a>
 
       <div class="roster-links">
 

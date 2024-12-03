@@ -24,7 +24,7 @@ export async function getStaticPaths() {
   })
 }
 
-const { name, photo, links, blog, blog_theme, _updatedAt} = Astro.props;
+const { name, icon, photo, links, blog, blog_theme, _updatedAt} = Astro.props;
 
 const posts = await sanityClient.fetch(`*[_type == "post" && author._ref in *[name=="${name}"]._id] {..., author->} | order(_createdAt desc)`);
 
@@ -35,6 +35,7 @@ const posts = await sanityClient.fetch(`*[_type == "post" && author._ref in *[na
 
     <Profile 
       name={name}
+      emoticon={icon}
       photo={photo}
       links={links}
       lastOnline={_updatedAt}
