@@ -4,11 +4,25 @@ import urlForImage from "../sanity/urlForImage";
 const { badges } = Astro.props
 ---
 <div class="badges">
+
+  <div class="badges-track">
   
   {
     badges ? 
       badges.map(badge => ( <img src={urlForImage(badge).url()} /> )) :
       ""
   }
+
+  </div>
+
+  <div class="badges-track" aria-hidden="true">
+  
+    {
+      badges ? 
+        badges.map(badge => ( <img src={urlForImage(badge).url()} /> )) :
+        ""
+    }
+  
+    </div>  
   
 </div>

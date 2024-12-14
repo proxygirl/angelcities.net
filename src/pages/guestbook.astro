@@ -13,7 +13,7 @@ const site = await sanityClient.fetch(`*[_type == "settings"][0]`);
 
     <Card metadata={{title: 'Guestbook'}} theme={ site.blog_theme.post } classes={["post welcome"]} >
 
-      <x-memorista api-key="8af6ce20-1644-47df-adfe-ededb7409ae5"></x-memorista>
+      <iframe src='https://iframe.chat/embed?chat=80560652' id='chattable' frameborder='none'></iframe>
       
     </Card>
 
@@ -21,5 +21,4 @@ const site = await sanityClient.fetch(`*[_type == "settings"][0]`);
 
 </Page>
 
-<script crossorigin src="https://unpkg.com/@memorista/client-ui@2/dist/index.bundle.js"></script>
 

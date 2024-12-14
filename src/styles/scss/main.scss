@@ -190,16 +190,24 @@ nav {
 
 .badges {
 
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none; 
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  overflow-x: scroll;
+  --gap: 0rem;
   display: flex;
+  overflow: hidden;
+  user-select: none;
+  gap: var(--gap);
+
   border: 1px dotted;
+
+  &-track {
+
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    min-width: 100%;
+    gap: var(--gap);
+    animation: scroll 90s linear infinite reverse;
+
+  }
 
   img {
     width: 88px;
@@ -209,6 +217,14 @@ nav {
 
 }
 
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
+}
 .footer {
   display: flex;
   justify-content: center;
@@ -273,6 +289,11 @@ img {
     max-width: unset;        
   }  
 
+}
+
+.chakra-ui-light {
+  background: initial !important;
+  transition: none !important;
 }
 
 .chakra-avatar {
