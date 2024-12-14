@@ -10,7 +10,7 @@ const { artists } = Astro.props
     <RosterItem
       artist={artist}
       theme={artist.blog_theme && artist.blog_theme.profile ? 
-        buildTheme({card: artist.blog_theme.profile}).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {}) :
+        buildTheme({site: artist.blog_theme}).reduce((acc, obj) => ({...acc, [obj.key]: obj.value}), {}) :
         {}
       }
      />

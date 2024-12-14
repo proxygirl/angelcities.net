@@ -6,6 +6,8 @@ const { artist, theme } = Astro.props
 
 const photo = artist.photo ? urlForImage(artist.photo).fit("crop").crop("center").size(75, 75).url() : '/logo/logo.gif'
 
+// theme.site_profile_body_background_color = theme.site_profile_body_background_color ? theme.site_profile_body_background_color : 'rgba(0,0,0,0)'
+
 ---
 <li  class="roster-artist">
 

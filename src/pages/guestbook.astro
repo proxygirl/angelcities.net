@@ -1,0 +1,25 @@
+---
+import { sanityClient } from "sanity:client";
+
+import Page from '../layouts/Page.astro'
+import Card from '../components/Card.astro'
+import Post from "../components/Post.astro";
+
+const site = await sanityClient.fetch(`*[_type == "settings"][0]`);
+---
+<Page title="home" classes={["home"]} >
+
+  <section class="full-width">
+
+    <Card metadata={{title: 'Guestbook'}} theme={ site.blog_theme.post } classes={["post welcome"]} >
+
+      <x-memorista api-key="8af6ce20-1644-47df-adfe-ededb7409ae5"></x-memorista>
+      
+    </Card>
+
+  </section>
+
+</Page>
+
+<script crossorigin src="https://unpkg.com/@memorista/client-ui@2/dist/index.bundle.js"></script>
+

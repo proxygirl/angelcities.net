@@ -7,7 +7,14 @@ import Card from './Card.astro'
 
 const { posts } = Astro.props
 ---
-<>
+<div class="feed-pagination">
+  <ul>
+    <li>&lt;&lt; older</li>
+    <li>newer &gt;&gt;</li>
+  </ul>
+</div>
+
+<div class="feed-posts">
   {posts.length > 0 ? posts.map(post => (
     <Card
       metadata = {{
@@ -34,4 +41,4 @@ const { posts } = Astro.props
       <p>No posts?? T_T</p>
     </Card>
   }
-</>
+  </div>

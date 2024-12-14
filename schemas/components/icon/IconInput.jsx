@@ -17,7 +17,7 @@ export function IconInput(props) {
   )  
 
   return (
-    <Grid columns={10} gap={3}>
+    <Grid columns={7} gap={3}>
       {ICONS.map((icon) => (
         <Button
           key={icon.value}
@@ -26,7 +26,12 @@ export function IconInput(props) {
           tone={value === icon.value ? `primary` : `default`}
           onClick={handleClick}
         >
-          { icon.value ? <img src={`/images/emoticons/${icon.value}`} /> : ''}
+          { icon.value ?
+            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+              <img src={`/images/emoticons/${icon.value}`} />
+            </div> 
+            : ''
+          }
           
         </Button>
       ))}
