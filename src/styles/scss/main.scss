@@ -38,6 +38,7 @@ html {
   background-color: var(--site_background_color);
   background-image: var(--site_background_image_file);
   background-size: var(--site_background_image_size);
+  cursor: url('/images/cursor.gif'), auto;
 }
 
 html::after {
@@ -291,11 +292,18 @@ img {
 
 }
 
-.chakra-ui-light {
-  background: initial !important;
-  transition: none !important;
-}
+.guestbook {
 
-.chakra-avatar {
-  display: none !important;
+  &-chat {
+  
+    padding: 0 !important;
+    border: 1px dotted;
+    background-image: url('/images/aboutme.gif');
+
+    iframe {
+      border: none;
+      min-height: 500px;
+    }
+  }
+
 }

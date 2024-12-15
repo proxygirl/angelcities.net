@@ -7,18 +7,30 @@ import Post from "../components/Post.astro";
 
 const site = await sanityClient.fetch(`*[_type == "settings"][0]`);
 ---
+
 <Page title="home" classes={["home"]} >
 
   <section class="full-width">
 
-    <Card metadata={{title: 'Guestbook'}} theme={ site.blog_theme.post } classes={["post welcome"]} >
+    <Card metadata={{title: 'Guestbook'}} theme={ site.blog_theme.post } classes={["post welcome guestbook "]} >
 
-      <iframe src='https://iframe.chat/embed?chat=80560652' id='chattable' frameborder='none'></iframe>
+      <div>
+        Sign our guestbook!
+      </div>
+
+      <div class="guestbook-chat">
+        <iframe class="single" src='https://iframe.chat/embed?chat=angelcities' id='chattable' frameborder='none'></iframe>
+      </div>
       
     </Card>
 
   </section>
 
 </Page>
+
+<script src="https://chattable.neocities.org/scripts/main.min.js"></script>
+<script src="../scripts/chattable/style.js"></script>
+
+
 
 
