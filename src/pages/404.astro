@@ -7,13 +7,13 @@ import Post from "../components/Post.astro";
 
 const site = await sanityClient.fetch(`*[_type == "settings"][0]`);
 ---
-<Page title="about" classes={["about"]} >
+<Page title="404" classes={["404"]} >
 
   <section class="full-width">
 
-    <Card metadata={{title: site.about.title}} theme={ site.blog_theme.post } classes={["post welcome"]} >
+    <Card metadata={{title: '404'}} theme={ site.blog_theme.post } classes={["post 404"]} >
 
-      <Post blocks={site.about.blocks} />
+      you're safe here
       
     </Card>
 

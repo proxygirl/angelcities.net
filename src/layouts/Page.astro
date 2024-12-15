@@ -35,7 +35,7 @@ if (theme) {
     <div class="wrapper">
 
       { 
-        title == "home" ? 
+        (title == "home" || title == "guestbook" || title == "merch" || title == "about") ? 
           <Header links={site.navigation.links} badges={ site.navigation.badges } sotd={ site.navigation.sotd } /> :
           <MiniHeader />
       }
