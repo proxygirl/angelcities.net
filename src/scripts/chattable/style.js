@@ -205,6 +205,9 @@ width: 2px;
 borer-radius: 0;
 background-color: #222;
 }
+#tutorialShadow {
+  display: none !important;
+}
 
 `, "*");
 });

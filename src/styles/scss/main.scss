@@ -128,6 +128,7 @@ nav {
 
   .menu {
     flex: 1 350px;
+    flex-wrap: wrap;
     display: flex;
     flex-direction: row;
     padding: 0.5rem;
@@ -290,6 +291,13 @@ img {
     max-width: unset;        
   }  
 
+}
+
+.post:not(.currently) {
+      ul {
+      list-style-type: initial;
+      padding-left: 1rem;
+    }
 }
 
 .guestbook {
